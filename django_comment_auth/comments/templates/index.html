@@ -5,8 +5,8 @@
 {% endblock %}
  
 {% block content %}
-    <h1 class="my-5">コメント投稿アプリケーション</h1>
-    {% if user.is_authenticated %}
+<h1 class="my-5">コメント投稿アプリケーション</h1>
+{% if user.is_authenticated %}
         <p>
             ようこそ {{ user.username }} さん．ログイン中です．
         </p>
@@ -23,5 +23,4 @@
             </a>してください
         </p>
     {% endif %}
- 
 {% endblock content %}
