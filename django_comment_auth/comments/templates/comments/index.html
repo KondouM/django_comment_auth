@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+コメント一覧
+{% endblock %}
+ 
+{% block content %}
+<h1 class="my-5">コメント一覧</h1>
+{% for comment in comments %}
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">
+      <a href="{% url 'comments:show' comment.id  %}">
+        {{ comment.title }}
+      </a>
+    </h5>
+    <p class="card-text">{{ comment.body }}</p>
+  </div>
+</div>
+{% endfor %}
+<ul>
+    <li>
+        <a href="{% url 'comments:index' %}">コメント一覧</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:show' 10  %}">コメント詳細</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:create' %}">コメント投稿</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:update' 10  %}">コメント更新</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:delete' 10  %}">コメント削除</a>
+    </li>
+    <li>
+        <a href="/">トップページへ</a>
+    </li>
+</ul>
+<p>
+    <a href="{% url 'comments:logout' %}">
+        [ ログアウト ]
+    </a>
+</p>
+{% endblock content %}

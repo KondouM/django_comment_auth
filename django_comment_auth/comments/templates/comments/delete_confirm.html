@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+コメントの削除
+{% endblock %}
+ 
+{% block content %}
+<h1 class="my-5">コメントの削除</h1>
+<ul>
+    <li>
+        <a href="{% url 'comments:index' %}">コメント一覧</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:show' 10  %}">コメント詳細</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:create' %}">コメント投稿</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:update' 10  %}">コメント更新</a>
+    </li>
+    <li>
+        <a href="{% url 'comments:delete' 10  %}">コメント削除</a>
+    </li>
+    <li>
+        <a href="/">トップページへ</a>
+    </li>
+</ul>
+{% endblock content %}

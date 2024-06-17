@@ -1,0 +1,102 @@
+[
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "最初のコメント (a)",
+            "body": "コメントの本文",
+            "owner_id": 1,
+            "created_at": "2022-07-27T11:01:00.000",
+            "updated_at": "2022-07-27T11:01:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "2個目のコメント (b)",
+            "body": "コメントの本文2",
+            "owner_id": 2,
+            "created_at": "2022-07-27T11:02:00.000",
+            "updated_at": "2022-07-27T11:02:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "<3個目>のコメント (a)",
+            "body": "<h1>コメントの本文3</h1>",
+            "owner_id": 1,
+            "created_at": "2022-07-27T11:03:00.000",
+            "updated_at": "2022-07-27T11:03:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "4個目のコメント (b)",
+            "body": "コメントの本文4",
+            "owner_id": 2,
+            "created_at": "2022-07-27T11:04:00.000",
+            "updated_at": "2022-07-27T11:04:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "5個目のコメント (a)",
+            "body": "コメントの本文5",
+            "owner_id": 1,
+            "created_at": "2022-07-27T11:05:00.000",
+            "updated_at": "2022-07-27T11:05:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "6個目のコメント (b)",
+            "body": "コメントの本文6",
+            "owner_id": 2,
+            "created_at": "2022-07-27T11:06:00.000",
+            "updated_at": "2022-07-27T11:06:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "7個目のコメント (a)",
+            "body": "コメントの本文7",
+            "owner_id": 1,
+            "created_at": "2022-07-27T11:07:00.000",
+            "updated_at": "2022-07-27T11:07:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "8個目のコメント (b)",
+            "body": "コメントの本文8",
+            "owner_id": 2,
+            "created_at": "2022-07-27T11:08:00.000",
+            "updated_at": "2022-07-27T11:08:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "9個目のコメント (a)",
+            "body": "コメントの本文9",
+            "owner_id": 1,
+            "created_at": "2022-07-27T11:09:00.000",
+            "updated_at": "2022-07-27T11:20:00.000"
+        }
+    },
+    {
+        "model": "comments.comment",
+        "fields": {
+            "title": "10個目のコメント (b)",
+            "body": "コメントの本文10",
+            "owner_id": 2,
+            "created_at": "2022-07-27T11:10:00.000",
+            "updated_at": "2022-07-27T11:10:00.000"
+        }
+    }
+]

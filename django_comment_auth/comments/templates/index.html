@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+コメント投稿アプリケーション
+{% endblock %}
+ 
+{% block content %}
+    <h1 class="my-5">コメント投稿アプリケーション</h1>
+    {% if user.is_authenticated %}
+        <p>
+            ようこそ {{ user.username }} さん．ログイン中です．
+        </p>
+        <p>
+            <a href="{% url 'comments:index' %}">
+                コメント一覧ページに移動します．
+            </a>
+        </p>
+    {% else %}
+        <p>
+            ログインしていません．
+            <a href="{% url 'comments:index' %}">
+                ここからログイン
+            </a>してください
+        </p>
+    {% endif %}
+ 
+{% endblock content %}

@@ -1,0 +1,9 @@
+/* ログインフォームなどで行間を調整 */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+ 
+/* ログインボタンなどの幅を広く */
+.btn-block {
+    width: 100%;
+}
