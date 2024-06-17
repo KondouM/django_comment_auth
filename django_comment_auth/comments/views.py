@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import authenticate,login,logout
 from django.shortcuts import redirect
 from django.urls import reverse
@@ -39,7 +40,10 @@ def comments_show(request, comment_id):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     context = {}
-    context['comment_id'] = comment_id
+    # context['comment_id'] = comment_id
+    comment = get_object_or_404(Comment, pk=comment_id)
+    context['comment'] = comment
+    context['is_owner'] = comment.is_owner(request.user)
     return render(request,'comments/show.html',context)
 
 def comments_create(request):

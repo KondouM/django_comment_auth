@@ -10,3 +10,9 @@ class Comment(models.Model):
     
     class Meta:
         ordering = ['-updated_at'] # 降順ソート
+        
+    #ログインユーザーがコメント投稿者かどうかを判断する
+    def is_owner(self, user):
+        if self.owner.id == user.id:
+            return True
+        return False

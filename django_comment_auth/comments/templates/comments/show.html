@@ -1,11 +1,53 @@
 {% extends "base.html" %}
- 
+
 {% block title %}
-コメント {{ comment_id }}
+コメント {{ comment.id }}
 {% endblock %}
- 
+
 {% block content %}
-<h1 class="my-5">コメント {{ comment_id }}</h1>
+<h1 class="my-5">コメント {{ comment.id }}</h1>
+<div class="card mb-3">
+    <div class="card-header">
+        ID : {{ comment.id }}
+    </div>
+    <div class="card-body">
+        <p class="card-text">Title : </p>
+        <h5 class="card-title">{{ comment.title }}</h5>
+        <p class="card-text">Body : </p>
+        <p class="card-text">{{ comment.body }}</p>
+    </div>
+    <div class="card-footer">
+        {% if is_owner %}
+            投稿者です<br>
+        {% else %}
+            投稿者ではありません<br>
+        {% endif %}
+        Owner ID : {{ comment.owner_id }}<br>
+        Owner UserName : {{ comment.owner }}<br>
+        Owner E-mail : {{ comment.owner.email }}<br>
+        Created at : {{ comment.created_at }}<br>
+        Updated at : {{ comment.updated_at }}
+    </div>
+</div>
+<hr>
+{% if is_owner %}
+    <div>
+        <p>
+            <a href="{% url 'comments:update' comment.id %}">
+                [ 編集 ]
+            </a>
+            <a href="{% url 'comments:delete' comment.id %}">
+                [ 削除 ]
+            </a>
+        </p>
+    </div>
+{% else %}
+<div>
+    <p>[ 編集 ] [ 削除 ]</p>
+</div>
+{% endif %}
+<div>
+</div>
 <ul>
     <li>
         <a href="{% url 'comments:index' %}">コメント一覧</a>
