@@ -7,6 +7,7 @@ from django.urls import reverse
 
 from .models import Comment
 from .forms import CommentForm
+from .forms import UserForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 
@@ -89,10 +90,70 @@ def comments_update(request, comment_id):
     context['page_title'] = 'コメントの編集'
     return render(request, 'comments/form.html', context)
 
-def comments_delete(request,comment_id):
+def comments_delete(request, comment_id):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-    return render(request, 'comments/delete_confirm.html')
+    # return render(request, 'comments/delete_confirm.html')
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, pk=comment_id)
+        if comment.is_owner(request.user) == False:
+            messages.success(request, '他ユーザのコメントは削除できません')
+            return redirect(reverse('comments:index'))
+        comment.delete()
+        messages.success(request, 'コメントを削除しました')
+        return redirect(reverse('comments:index'))
+    else:
+        context = {}
+        comment = get_object_or_404(Comment, pk=comment_id)
+        if comment.is_owner(request.user) == False:
+            messages.success(request, '他ユーザのコメントは削除できません')
+            return redirect(reverse('comments:index'))
+        context['id'] = comment_id
+        context['title'] = comment.title
+        context['body'] = comment.body
+        context['page_title'] = 'コメントの削除'
+        context['form_name'] = 'コメントを削除しますか'
+        context['button_label'] = 'コメントを削除する'
+        return render(request, 'comments/delete_confirm.html', context)
+
+def profile(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    context = {}
+    context['user'] = request.user
+    return render(request, 'profile/show.html', context)
+
+def profile_update(request, user_id):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    if user_id != request.user.id:
+            messages.success(request, '他ユーザのProfileは編集できません')
+            return redirect(reverse('comments:index'))
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            user = request.user
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.save()
+            messages.success(request, '更新しました')
+            return redirect(reverse('comments:profile'))
+        else:
+            # エラーメッセージをつけて返す
+            context = {}
+            context['form'] = form
+            return render(request, 'profile/profile_form.html', context)
+    else:
+        context = {}
+        context['user'] = request.user
+        context['user_id'] = user_id
+        context['form'] = UserForm(
+                                initial={
+                                    'first_name' : request.user.first_name,
+                                    'last_name' : request.user.last_name,
+                                }
+                            )
+        return render(request, 'profile/profile_form.html', context)
 
 def logout_view(request):
     logout(request)

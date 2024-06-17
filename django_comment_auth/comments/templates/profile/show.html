@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+ 
+{% block title %}
+Profile
+{% endblock %}
+ 
+{% block content %}
+  <h1 class="my-5">Profile</h1>
+  <div class="card mb-3">
+    <div class="card-header">
+      ID : {{ user.id }}
+    </div>
+    <div class="card-body">
+      <p class="card-text">User Name : {{ user.username }}</p>
+      <p class="card-text">First Name : {{ user.first_name }}</p>
+      <p class="card-text">Last Name : {{ user.last_name }}</p>
+      <p class="card-text">Email : {{ user.email }}</p>
+      <p class="card-text">Date Joined : {{ user.date_joined }}</p>
+      <p class="card-text">Last Login : {{ user.last_login }}</p>
+      <p class="card-text">Is Superuser : {{ user.is_superuser }}</p>
+      <p class="card-text">Is Staff : {{ user.is_staff }}</p>
+      <p class="card-text">Is active : {{ user.is_active }}</p>
+      <p class="card-text">Password : {{ user.password }}</p>
+    </div>
+    <div class="card-footer">
+      <p>
+        <a href="{% url 'comments:profile_update' user.id  %}">名前の変更</a>
+      </p>
+    </div>
+  </div>
+  <hr>
+
+{% endblock content %}

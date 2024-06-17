@@ -19,29 +19,4 @@
 </div>
 {% endfor %}
 {% include 'simple_pagination.html' %}
-<ul>
-    <li>
-        <a href="{% url 'comments:index' %}">コメント一覧</a>
-    </li>
-    <li>
-        <a href="{% url 'comments:show' 10  %}">コメント詳細</a>
-    </li>
-    <li>
-        <a href="{% url 'comments:create' %}">コメント投稿</a>
-    </li>
-    <li>
-        <a href="{% url 'comments:update' 10  %}">コメント更新</a>
-    </li>
-    <li>
-        <a href="{% url 'comments:delete' 10  %}">コメント削除</a>
-    </li>
-    <li>
-        <a href="/">トップページへ</a>
-    </li>
-</ul>
-<p>
-    <a href="{% url 'comments:logout' %}">
-        [ ログアウト ]
-    </a>
-</p>
 {% endblock content %}
