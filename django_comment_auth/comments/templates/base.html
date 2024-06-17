@@ -45,6 +45,11 @@
       </div>
     </div>
   </nav>
+  <div>
+    {% for message in messages %}
+      <p class="flash_message" onclick="this.classList.add('hidden')"> {{ message }}</p>
+    {% endfor %}
+  </div>
 {% block content %}
 {% endblock content %}
 </div>

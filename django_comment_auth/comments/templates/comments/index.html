@@ -18,6 +18,7 @@
   </div>
 </div>
 {% endfor %}
+{% include 'simple_pagination.html' %}
 <ul>
     <li>
         <a href="{% url 'comments:index' %}">コメント一覧</a>
